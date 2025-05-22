@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\": \"Usuario de Ejemplo\",\n    \"email\": \"ejemplo@correo.com\",\n    \"password\": \"supersecreto\"\n}",
+							"raw": "{\n  \"name\": \"Juan José Mayorquín\",\n  \"email\": \"juanjmayor@outlook.es\",\n  \"password\": \"PruebaRedes12345#\",\n  \"role\": \"cliente\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -25,12 +25,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/usuarios",
+							"raw": "{{baseUrl}}/usuarios/api/users/registro",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"usuarios"
+								"usuarios",
+								"api",
+								"users",
+								"registro"
 							]
 						}
 					},
@@ -99,8 +102,29 @@
 				{
 					"name": "Login",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"juanjmayor@outlook.es\",\r\n    \"password\" : \"PruebaRedes12345#\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/api/users/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"api",
+								"users",
+								"login"
+							]
+						}
 					},
 					"response": [
 						{
@@ -168,15 +192,23 @@
 					"name": "Obtener usuario por ID",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{baseUrl}}/usuarios/1",
+							"raw": "{{baseUrl}}/usuarios/api/users/perfil",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"usuarios",
-								"1"
+								"api",
+								"users",
+								"perfil"
 							]
 						}
 					},
@@ -243,10 +275,16 @@
 					"name": "Actualizar usuario por ID",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\": \"Usuario Actualizado\",\n    \"email\": \"actualizado@correo.com\"\n}",
+							"raw": "{\n    \"name\": \"Usuario Actualizado\",\n    \"email\": \"actualizado@correo.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -254,13 +292,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/usuarios/1",
+							"raw": "{{baseUrl}}/usuarios/api/users/perfil",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"usuarios",
-								"1"
+								"api",
+								"users",
+								"perfil"
 							]
 						}
 					},
@@ -336,15 +376,23 @@
 					"name": "Eliminar usuario por ID",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{baseUrl}}/usuarios/1",
+							"raw": "{{baseUrl}}/usuarios/api/users/perfil",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"usuarios",
-								"1"
+								"api",
+								"users",
+								"perfil"
 							]
 						}
 					},
@@ -418,12 +466,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/productos",
+							"raw": "{{baseUrl}}/productos/api/products",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"productos"
+								"productos",
+								"api",
+								"products"
 							]
 						}
 					},
@@ -435,13 +485,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/productos/1",
+							"raw": "{{baseUrl}}/productos/api/products/:id",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"productos",
-								"1"
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
 							]
 						}
 					},
@@ -454,7 +512,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\": \"Producto Increíble\",\n    \"descripcion\": \"Este producto es genial\",\n    \"precio\": 99.99,\n    \"stock\": 100\n}",
+							"raw": "{\n    \"nombre\": \"Camiseta\",\n    \"descripcion\": \"Bonita camiseta\",\n    \"precio\": 60000,\n    \"categoria\": \"camiseta\",\n    \"stock\": 400,\n    \"imagenURL\": \"https://image.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -462,12 +520,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/productos",
+							"raw": "{{baseUrl}}/productos/api/products",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"productos"
+								"productos",
+								"api",
+								"products"
 							]
 						}
 					},
@@ -475,12 +535,15 @@
 				},
 				{
 					"name": "Actualizar producto por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "PUT",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\": \"Producto Asombroso Actualizado\",\n    \"precio\": 109.99\n}",
+							"raw": "{\n    \"nombre\": \"Nuevo nombre\",\n    \"descripcion\": \"Bonita camiseta más bonita\",\n    \"precio\": 60000,\n    \"categoria\": \"camiseta\",\n    \"stock\": 400,\n    \"imagenURL\": \"https://image.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -488,13 +551,21 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/productos/1",
+							"raw": "{{baseUrl}}/productos/api/products/:id",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"productos",
-								"1"
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
 							]
 						}
 					},
@@ -503,16 +574,24 @@
 				{
 					"name": "Eliminar producto por ID",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/productos/1",
+							"raw": "{{baseUrl}}/productos/api/products/:id",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"productos",
-								"1"
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
 							]
 						}
 					},
@@ -530,7 +609,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"productId\": \"prod456\",\n    \"quantity\": 2\n}",
+							"raw": "{\n    \"userId\": 4,\n    \"productId\": 6,\n    \"name\": 8,\n    \"price\": 65000,\n    \"quantity\": 4\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -538,14 +617,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/carrito/userId123/items",
+							"raw": "{{baseUrl}}/carrito/api/cart/",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"carrito",
-								"userId123",
-								"items"
+								"api",
+								"cart",
+								""
 							]
 						}
 					},
@@ -557,13 +637,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/carrito/userId123",
+							"raw": "{{baseUrl}}/carrito/api/cart/:userId",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"carrito",
-								"userId123"
+								"api",
+								"cart",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "4"
+								}
 							]
 						}
 					},
@@ -576,7 +664,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quantity\": 3\n}",
+							"raw": "{\n    \"userId\" : 4,\n    \"quantity\": 3\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -584,15 +672,22 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/carrito/userId123/items/itemId789",
+							"raw": "{{baseUrl}}/carrito/api/cart/item/:productId",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"carrito",
-								"userId123",
-								"items",
-								"itemId789"
+								"api",
+								"cart",
+								"item",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "4"
+								}
 							]
 						}
 					},
@@ -601,18 +696,25 @@
 				{
 					"name": "Eliminar item del carrito",
 					"request": {
-						"method": "DELETE",
+						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/carrito/userId123/items/itemId789",
+							"raw": "{{baseUrl}}/carrito/api/cart/:productId/remove",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"carrito",
-								"userId123",
-								"items",
-								"itemId789"
+								"api",
+								"cart",
+								":productId",
+								"remove"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "5"
+								}
 							]
 						}
 					},
@@ -624,13 +726,21 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/carrito/userId123",
+							"raw": "{{baseUrl}}/carrito/api/cart/:userId",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"carrito",
-								"userId123"
+								"api",
+								"cart",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "3"
+								}
 							]
 						}
 					},
@@ -656,12 +766,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/pedidos",
+							"raw": "{{baseUrl}}/pedidos/api/orders",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"pedidos"
+								"pedidos",
+								"api",
+								"orders"
 							]
 						}
 					},
@@ -673,12 +785,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/pedidos",
+							"raw": "{{baseUrl}}/pedidos/api/orders/",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"pedidos"
+								"pedidos",
+								"api",
+								"orders",
+								""
 							]
 						}
 					},
