@@ -1,0 +1,776 @@
+{
+	"info": {
+		"_postman_id": "d397241c-28db-4198-a5cd-dcc64f018861",
+		"name": "Microservices API Gateway Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43847782",
+		"_collection_link": "https://red-station-9034058.postman.co/workspace/Redes~689d4714-51e4-4284-9261-6912f77fc977/collection/43847782-d397241c-28db-4198-a5cd-dcc64f018861?action=share&source=collection_link&creator=43847782"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Usuario de Ejemplo\",\n    \"email\": \"ejemplo@correo.com\",\n    \"password\": \"supersecreto\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear usuario",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Juan José Mayorquín\",\n  \"email\": \"juanjmayor@outlook.es\",\n  \"password\": \"PruebaRedes12345#\",\n  \"role\": \"cliente\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/api/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "128"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"80-TOOhOa/Y/Oxuh6I0Wxi6BQipvG4\""
+								},
+								{
+									"key": "date",
+									"value": "Thu, 22 May 2025 05:26:31 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"Juan José Mayorquín\",\n    \"email\": \"juanjmayor@outlook.es\",\n    \"role\": \"cliente\",\n    \"created_at\": \"2025-05-22T05:26:31.447Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"juanjmayor@outlook.es\",\r\n    \"password\" : \"PruebaRedes12345#\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/api/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "172"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"ac-IFxTfloyMkdMEfx8AgMJZSBQFg4\""
+								},
+								{
+									"key": "date",
+									"value": "Thu, 22 May 2025 05:26:40 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImNsaWVudGUiLCJpYXQiOjE3NDc4OTE2MDAsImV4cCI6MTc0Nzg5NTIwMH0.4LrBBwq4uT5K1jtIMautyhirWkKyai6nVm2WTBngN1g\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener usuario por ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/api/users/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "128"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"80-TOOhOa/Y/Oxuh6I0Wxi6BQipvG4\""
+								},
+								{
+									"key": "date",
+									"value": "Thu, 22 May 2025 05:27:23 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"Juan José Mayorquín\",\n    \"email\": \"juanjmayor@outlook.es\",\n    \"role\": \"cliente\",\n    \"created_at\": \"2025-05-22T05:26:31.447Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Actualizar usuario por ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Usuario Actualizado\",\n    \"email\": \"actualizado@correo.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualizar usuario por ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Usuario Actualizado\",\n    \"email\": \"actualizado@correo.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/api/users/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "127"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"7f-nexi+HnQWXPuJYXSsTeMQQ91Wnk\""
+								},
+								{
+									"key": "date",
+									"value": "Thu, 22 May 2025 05:27:37 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"Usuario Actualizado\",\n    \"email\": \"actualizado@correo.com\",\n    \"role\": \"cliente\",\n    \"created_at\": \"2025-05-22T05:26:31.447Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar usuario por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar usuario por ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/api/users/me",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "168"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"a8-p5c/DH911mccwzu6HPJVA9ih6X8\""
+								},
+								{
+									"key": "date",
+									"value": "Thu, 22 May 2025 05:27:45 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Cuenta desactivada\",\n    \"user\": {\n        \"id\": 4,\n        \"name\": \"Usuario Actualizado\",\n        \"email\": \"actualizado@correo.com\",\n        \"role\": \"disabled\",\n        \"created_at\": \"2025-05-22T05:26:31.447Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Listar Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener producto por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Producto Increíble\",\n    \"descripcion\": \"Este producto es genial\",\n    \"precio\": 99.99,\n    \"stock\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/productos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar producto por ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Producto Asombroso Actualizado\",\n    \"precio\": 109.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/productos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrito",
+			"item": [
+				{
+					"name": "Agregar item al carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"prod456\",\n    \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/carrito/userId123/items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carrito",
+								"userId123",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener carrito por ID de Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/carrito/userId123",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carrito",
+								"userId123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar item en carrito",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quantity\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/carrito/userId123/items/itemId789",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carrito",
+								"userId123",
+								"items",
+								"itemId789"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar item del carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/carrito/userId123/items/itemId789",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carrito",
+								"userId123",
+								"items",
+								"itemId789"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vaciar carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/carrito/userId123",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carrito",
+								"userId123"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "Crear pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"user123\",\n    \"cartId\": \"cart789\",\n    \"items\": [ { \"productId\": \"prod456\", \"quantity\": 1, \"price\": 50 } ],\n    \"totalAmount\": 50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pedidos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pedidos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener pedido por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pedidos/orderIdABC",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pedidos",
+								"orderIdABC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar pedido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos/api/orders/:pedidoId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"api",
+								"orders",
+								":pedidoId"
+							],
+							"variable": [
+								{
+									"key": "pedidoId",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos/api/orders/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"api",
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagos",
+			"item": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "default"
+		},
+		{
+			"key": "auth_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImNsaWVudGUiLCJpYXQiOjE3NDc4OTEzMDIsImV4cCI6MTc0Nzg5NDkwMn0.pt-fQsWSdHD8pZF_hfoPsJS19bi2J6h71dJjg7kZyy4",
+			"type": "default"
+		}
+	]
+}
